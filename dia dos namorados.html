@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Ana Luiza 💘</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa: #ff4d88;
+      --roxo: #7c3aed;
+      --azul: #60a5fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffe3f1, #e0e7ff);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Cookie', cursive;
+      font-size: 3.2em;
+      color: var(--rosa);
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(255, 0, 128, 0.3);
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+
+    button {
+      background: var(--roxo);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+      animation: pulse 2s infinite;
+      transition: transform 0.3s, background 0.4s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: var(--azul);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+    }
+
+    .chapter {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      border-radius: 15px;
+      background: white;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2);
+      color: #444;
+      font-weight: 600;
+      text-align: justify;
+    }
+
+    .show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    #typed-text {
+      font-family: 'Cookie', cursive;
+      font-size: 1.8em;
+      color: var(--rosa);
+      white-space: pre-wrap;
+      margin: 20px auto;
+      width: 90%;
+      text-align: center;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 6s linear infinite;
+      top: -10px;
+      z-index: 10;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% { top: -10px; opacity: 1; }
+      100% { top: 110%; opacity: 0; }
+    }
+
+    /* Tela de senha */
+    #senhaTela {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #senhaTela input {
+      padding: 15px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      border: 2px solid var(--rosa);
+      margin-top: 20px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #senhaTela button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tela de senha -->
+<div id="senhaTela">
+  <h1>Entre com a senha do nosso coração 🔐</h1>
+  <input type="password" id="senhaInput" placeholder="Digite a senha..." />
+  <button onclick="verificaSenha()">Entrar</button>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<h1 id="mainTitle" style="display:none">esse dia é nosso primeiro de muitos meu amor 🫶🏻</h1>
+<button id="startBtn" style="display:none" onclick="nextChapter()">Começar nossa história</button>
+
+<div class="chapter" id="chapter1">
+  <h1>Capítulo 1: Como tudo começou 💞</h1>
+  <p>Desde que você apareceu, tudo ficou mais bonito, mais doce. Você é minha paz, minha paixão, minha Ana Luiza!</p>
+  <button onclick="nextChapter()">Próximo</button>
+</div>
+
+<div class="chapter" id="chapter2">
+  <h1>Capítulo 2: Só eu e você 💑</h1>
+  <p>Com você, tudo tem cor, tudo faz sentido. Eu não quero um futuro que não tenha você nele.</p>
+  <button onclick="nextChapter()">Próximo</button>
+</div>
+
+<div class="chapter" id="chapter3">
+  <h1>Capítulo 3: A declaração 💌</h1>
+  <p id="typed-text"></p>
+</div>
+
+<audio id="musica" preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/ttz7m7jcfjvt0hzz6oyz8/Tim-Maia-Eu-Amo-Voce.mp3?rlkey=yp1mffn4sdd2a48ig2r2iz0sz&raw=1" type="audio/mpeg">
+</audio>
+
+<script>
+  const chapters = document.querySelectorAll('.chapter');
+  let current = 0;
+  function nextChapter() {
+    if (current < chapters.length) {
+      if (current > 0) chapters[current - 1].classList.remove('show');
+      chapters[current].classList.add('show');
+      if (current === 2) startTyping();
+      current++;
+    }
+  }
+
+  function verificaSenha() {
+    const senha = document.getElementById("senhaInput").value;
+    if (senha === "1405") {
+      document.getElementById("senhaTela").style.display = "none";
+      document.getElementById("mainTitle").style.display = "block";
+      document.getElementById("startBtn").style.display = "inline-block";
+    } else {
+      alert("Senha incorreta! Tente novamente 💔");
+    }
+  }
+
+  // Corações flutuando
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.background = ['#ff4d6d','#ff6699','#ff99cc'][Math.floor(Math.random()*3)];
+    heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+    document.getElementById('hearts').appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 300);
+
+  // Texto final + música
+  const finalText = `bom aqui estamos em nosso primeiro dia dos namorados juntos, eu i vose vose i eu, saiba que eu te amo muitoooo e que eu quero você pra toda minha vida, que esse dia seja o primeiro de muitos pra toda eternidade ao seu lado, você é a garota mais incrível que eu já vi na minha vida toda, eu amo cada detalhe seu, amo seu jeito eu amo tudoooooooo eu ti amu muitao bejos do seu stussy`;
+  let i = 0;
+  function startTyping() {
+    const el = document.getElementById("typed-text");
+    const audio = document.getElementById("musica");
+    audio.play();
+    const interval = setInterval(() => {
+      el.textContent += finalText[i];
+      i++;
+      if (i >= finalText.length) clearInterval(interval);
+    }, 50);
+  }
+</script>
+
+</body>
+</html>
